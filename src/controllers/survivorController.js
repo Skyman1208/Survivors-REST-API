@@ -1,10 +1,11 @@
-// In src/controllers/workoutController.js
-const workoutService = require("../services/workoutService");
+// In src/controllers/survivorController.js
+const survivorService = require("../services/survivorService");
 
-const getAllWorkouts = (req, res) => {
+const getAllSurvivors = (req, res) => {
+  const { mode } = req.query;
   try {
-    const allWorkouts = workoutService.getAllWorkouts();
-    res.send({ status: "OK", data: allWorkouts });
+    const allSurvivors = survivorService.getAllSurvivors({ mode });
+    res.send({ status: "OK", data: allSurvivors });
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -12,21 +13,21 @@ const getAllWorkouts = (req, res) => {
   }
 };
 
-const getOneWorkout = (req, res) => {
+const getOneSurvivor = (req, res) => {
   const {
-    params: { workoutId },
+    params: { survivorId },
   } = req;
-  if (!workoutId) {
+  if (!survivorId) {
     res
       .status(400)
       .send({
         status: "FAILED",
-        data: { error: "Parameter ':workoutId' can not be empty" },
+        data: { error: "Parameter ':survivorId' can not be empty" },
       });
   }
   try {
-    const workout = workoutService.getOneWorkout(workoutId);
-    res.send({ status: "OK", data: workout });
+    const survivor = survivorService.getOneSurvivor(survivorId);
+    res.send({ status: "OK", data: survivor });
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -34,7 +35,7 @@ const getOneWorkout = (req, res) => {
   }
 };
 
-const createNewWorkout = (req, res) => {
+const createNewSurvivor = (req, res) => {
   const { body } = req;
   if (
     !body.name ||
@@ -54,7 +55,7 @@ const createNewWorkout = (req, res) => {
       });
     return;
   }
-  const newWorkout = {
+  const newSurvivor = {
     name: body.name,
     mode: body.mode,
     equipment: body.equipment,
@@ -62,8 +63,8 @@ const createNewWorkout = (req, res) => {
     trainerTips: body.trainerTips,
   };
   try {
-    const createdWorkout = workoutService.createNewWorkout(newWorkout);
-    res.status(201).send({ status: "OK", data: createdWorkout });
+    const createdSurvivor = survivorService.createNewSurvivor(newSurvivor);
+    res.status(201).send({ status: "OK", data: createdSurvivor });
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -71,22 +72,22 @@ const createNewWorkout = (req, res) => {
   }
 };
 
-const updateOneWorkout = (req, res) => {
+const updateOneSurvivor = (req, res) => {
   const {
     body,
-    params: { workoutId },
+    params: { survivorId },
   } = req;
-  if (!workoutId) {
+  if (!survivorId) {
     res
       .status(400)
       .send({
         status: "FAILED",
-        data: { error: "Parameter ':workoutId' can not be empty" },
+        data: { error: "Parameter ':survivorId' can not be empty" },
       });
   }
   try {
-    const updatedWorkout = workoutService.updateOneWorkout(workoutId, body);
-    res.send({ status: "OK", data: updatedWorkout });
+    const updatedSurvivor = survivorService.updateOneSurvivor(survivorId, body);
+    res.send({ status: "OK", data: updatedSurvivor });
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -94,20 +95,20 @@ const updateOneWorkout = (req, res) => {
   }
 };
 
-const deleteOneWorkout = (req, res) => {
+const deleteOneSurvivor = (req, res) => {
   const {
-    params: { workoutId },
+    params: { survivorId },
   } = req;
-  if (!workoutId) {
+  if (!survivorId) {
     res
       .status(400)
       .send({
         status: "FAILED",
-        data: { error: "Parameter ':workoutId' can not be empty" },
+        data: { error: "Parameter ':survivorId' can not be empty" },
       });
   }
   try {
-    workoutService.deleteOneWorkout(workoutId);
+    survivorService.deleteOneSurvivor(survivorId);
     res.status(204).send({ status: "OK" });
   } catch (error) {
     res
@@ -117,9 +118,9 @@ const deleteOneWorkout = (req, res) => {
 };
 
 module.exports = {
-  getAllWorkouts,
-  getOneWorkout,
-  createNewWorkout,
-  updateOneWorkout,
-  deleteOneWorkout,
+  getAllSurvivors,
+  getOneSurvivor,
+  createNewSurvivor,
+  updateOneSurvivor,
+  deleteOneSurvivor,
 };
