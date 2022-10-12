@@ -13,6 +13,18 @@ const getAllSurvivors = (req, res) => {
   }
 };
 
+const getReports = (req, res) => {
+  const { mode } = req.query;
+  try {
+    const allSurvivors = survivorService.getReports({ mode });
+    res.send({ status: "OK", data: allSurvivors });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
+};
+
 const getOneSurvivor = (req, res) => {
   const {
     params: { survivorId },
@@ -39,10 +51,10 @@ const createNewSurvivor = (req, res) => {
   const { body } = req;
   if (
     !body.name ||
-    !body.mode ||
-    !body.equipment ||
-    !body.exercises ||
-    !body.trainerTips
+    !body.age ||
+    !body.gender ||
+    !body.lastLocation ||
+    !body.inventory
   ) {
     res
       .status(400)
@@ -50,20 +62,21 @@ const createNewSurvivor = (req, res) => {
         status: "FAILED",
         data: {
           error:
-            "One of the following keys is missing or is empty in request body: 'name', 'mode', 'equipment', 'exercises', 'trainerTips'",
+            "One of the following keys is missing or is empty in request body: 'name', 'age', 'gender', 'lastLocation', 'inventory'",
         },
       });
     return;
   }
   const newSurvivor = {
     name: body.name,
-    mode: body.mode,
-    equipment: body.equipment,
-    exercises: body.exercises,
-    trainerTips: body.trainerTips,
+    age: body.age,
+    gender: body.gender,
+    lastLocation: body.lastLocation,
+    inventory: body.inventory,
   };
   try {
     const createdSurvivor = survivorService.createNewSurvivor(newSurvivor);
+    // console.log(createdSurvivor);
     res.status(201).send({ status: "OK", data: createdSurvivor });
   } catch (error) {
     res
@@ -119,6 +132,7 @@ const deleteOneSurvivor = (req, res) => {
 
 module.exports = {
   getAllSurvivors,
+  getReports,
   getOneSurvivor,
   createNewSurvivor,
   updateOneSurvivor,

@@ -10,7 +10,20 @@ const getAllSurvivors = (filterParams) => {
         survivor.mode.toLowerCase().includes(filterParams.mode)
       );
     }
-    // Other if-statements will go here for different parameters
+    return survivors;
+  } catch (error) {
+    throw { status: 500, message: error };
+  }
+};
+
+const getReports = (filterParams) => {
+  try {
+    let survivors = DB.survivors;
+    if (filterParams.mode) {
+      return DB.survivors.filter((survivor) =>
+        survivor.mode.toLowerCase().includes(filterParams.mode)
+      );
+    }
     return survivors;
   } catch (error) {
     throw { status: 500, message: error };
@@ -102,6 +115,7 @@ const deleteOneSurvivor = (survivorId) => {
 
 module.exports = {
   getAllSurvivors,
+  getReports,
   createNewSurvivor,
   getOneSurvivor,
   updateOneSurvivor,

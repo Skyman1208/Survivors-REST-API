@@ -11,6 +11,15 @@ const getAllSurvivors = (filterParams) => {
   }
 };
 
+const getReports = (filterParams) => {
+  try {
+    const allSurvivors = Survivor.getReports(filterParams);
+    return allSurvivors;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const getOneSurvivor = (survivorId) => {
   try {
     const survivor = Survivor.getOneSurvivor(survivorId);
@@ -54,6 +63,7 @@ const deleteOneSurvivor = (survivorId) => {
 
 module.exports = {
   getAllSurvivors,
+  getReports,
   getOneSurvivor,
   createNewSurvivor,
   updateOneSurvivor,

@@ -1,14 +1,16 @@
-// In src/v1/routes/survivorRoutes.js
+// In src/routes/survivorRoutes.js
 const express = require("express");
-const survivorController = require("../../controllers/survivorController");
+const survivorController = require("../controllers/survivorController");
 
 const router = express.Router();
 
-router.get("/", survivorController.getAllSurvivors);
+router.get("/records", survivorController.getAllSurvivors);
+
+router.get("/reports", survivorController.getReports);
 
 router.get("/:survivorId", survivorController.getOneSurvivor);
 
-router.post("/", survivorController.createNewSurvivor);
+router.post("/registration", survivorController.createNewSurvivor);
 
 router.patch("/:survivorId", survivorController.updateOneSurvivor);
 
