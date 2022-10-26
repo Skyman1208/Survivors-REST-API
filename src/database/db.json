@@ -4,47 +4,60 @@
       "name": "Ali Bin Abu",
       "age": "24 years old",
       "gender": "Male",
-      "lastLocation": [
-        111.34,
-        334.53
-      ],
+      "survivorInfectStatus": "No",
+      "lastLocation": {
+        "lat": 3.158,
+        "lng": 101.7123
+      },
       "inventory": [
         "Car",
         "Bottle"
       ],
       "id": "70aa535f-cad1-43e7-b7ca-2e259f8c9e70",
       "createdAt": "10/12/2022, 09:37:54 PM",
-      "updatedAt": "10/12/2022, 12:48:02 PM"
-    },
-    {
-      "name": "Ahmad Bin Ubaidah",
-      "age": "32 years old",
-      "gender": "Male",
-      "lastLocation": [
-        567.45,
-        777.78
-      ],
-      "inventory": [
-        "Phone",
-        "Laptop",
-        "Camera"
-      ],
-      "id": "a67d9fd1-5f72-4da0-898c-585948ca267a",
-      "createdAt": "10/12/2022, 09:39:45 PM",
-      "updatedAt": "10/12/2022, 09:39:45 PM"
+      "updatedAt": "10/16/2022, 2:23:59 AM"
     },
     {
       "name": "Lai Cong Yen",
       "age": "43 years old",
       "gender": "Feale",
-      "lastLocation": [
-        445.45,
-        657.78
-      ],
+      "survivorInfectStatus": "yes",
+      "lastLocation": {
+        "lat": 3.1555,
+        "lng": 101.7123
+      },
       "inventory": [],
       "id": "1035c8ca-fc02-4ad5-b24d-d5055e5ec56b",
       "createdAt": "10/12/2022, 12:42:01 PM",
-      "updatedAt": "10/12/2022, 12:42:01 PM"
+      "updatedAt": "10/16/2022, 2:56:38 AM"
+    },
+    {
+      "name": "Yap Zong Heng",
+      "age": "43 years old",
+      "gender": "Feale",
+      "survivorInfectStatus": "yes",
+      "lastLocation": {
+        "lat": 2.3822,
+        "lng": 102.2116
+      },
+      "inventory": [],
+      "id": "da1fad27-15b6-40e9-9054-c34fed8069e4",
+      "createdAt": "10/16/2022, 1:59:22 AM",
+      "updatedAt": "10/16/2022, 1:59:23 AM"
+    },
+    {
+      "name": "Vishnu Rashi",
+      "age": "43 years old",
+      "gender": "Feale",
+      "survivorInfectStatus": "No",
+      "lastLocation": {
+        "lat": 2.3822,
+        "lng": 102.2116
+      },
+      "inventory": [],
+      "id": "615ccccf-eb4d-4729-90a1-cec85280d208",
+      "createdAt": "10/16/2022, 2:06:27 AM",
+      "updatedAt": "10/16/2022, 2:06:27 AM"
     }
   ]
 }

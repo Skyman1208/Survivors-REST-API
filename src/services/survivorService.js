@@ -11,10 +11,10 @@ const getAllSurvivors = (filterParams) => {
   }
 };
 
-const getReports = (filterParams) => {
+const getReports = () => {
   try {
-    const allSurvivors = Survivor.getReports(filterParams);
-    return allSurvivors;
+    const reports = Survivor.getReports();
+    return reports;
   } catch (error) {
     throw error;
   }
